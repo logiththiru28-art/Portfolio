@@ -1,0 +1,702 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Logith T - Data Analytics Professional</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #ffffff;
+            background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 50%, #0f172a 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, rgba(37, 99, 235, 0.2) 0%, rgba(147, 51, 234, 0.2) 100%);
+            padding: 80px 0;
+            text-align: center;
+            border-bottom: 2px solid rgba(59, 130, 246, 0.3);
+        }
+
+        h1 {
+            font-size: 4rem;
+            margin-bottom: 10px;
+            background: linear-gradient(135deg, #60a5fa 0%, #a78bfa 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-weight: 700;
+        }
+
+        .subtitle {
+            font-size: 1.5rem;
+            color: #93c5fd;
+            margin-bottom: 20px;
+        }
+
+        .bio {
+            max-width: 800px;
+            margin: 20px auto;
+            font-size: 1.1rem;
+            color: #d1d5db;
+            line-height: 1.8;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            margin: 30px 0;
+        }
+
+        .contact-item {
+            background: rgba(59, 130, 246, 0.2);
+            padding: 10px 20px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transition: all 0.3s;
+        }
+
+        .contact-item:hover {
+            background: rgba(59, 130, 246, 0.3);
+            transform: translateY(-2px);
+        }
+
+        .contact-item i {
+            color: #60a5fa;
+        }
+
+        .btn-group {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            margin-top: 30px;
+        }
+
+        .btn {
+            padding: 15px 30px;
+            border-radius: 10px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #2563eb 0%, #7c3aed 100%);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(37, 99, 235, 0.4);
+        }
+
+        .btn-secondary {
+            border: 2px solid #60a5fa;
+            color: #60a5fa;
+        }
+
+        .btn-secondary:hover {
+            background: rgba(96, 165, 250, 0.1);
+        }
+
+        /* Navigation */
+        nav {
+            position: sticky;
+            top: 0;
+            background: rgba(15, 23, 42, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(59, 130, 246, 0.2);
+            z-index: 100;
+            padding: 15px 0;
+        }
+
+        .nav-links {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 10px;
+            list-style: none;
+        }
+
+        .nav-links button {
+            background: transparent;
+            border: none;
+            color: #d1d5db;
+            padding: 10px 25px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: all 0.3s;
+            font-weight: 500;
+        }
+
+        .nav-links button:hover,
+        .nav-links button.active {
+            background: #2563eb;
+            color: white;
+        }
+
+        /* Sections */
+        section {
+            padding: 60px 0;
+            display: none;
+        }
+
+        section.active {
+            display: block;
+            animation: fadeIn 0.5s;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            margin-bottom: 40px;
+            color: #60a5fa;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        h2::before {
+            content: '';
+            display: block;
+            width: 50px;
+            height: 4px;
+            background: linear-gradient(135deg, #2563eb 0%, #7c3aed 100%);
+        }
+
+        .card {
+            background: rgba(30, 41, 59, 0.5);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(59, 130, 246, 0.2);
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 30px;
+            transition: all 0.3s;
+        }
+
+        .card:hover {
+            border-color: rgba(59, 130, 246, 0.4);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(37, 99, 235, 0.2);
+        }
+
+        .card h3 {
+            color: #60a5fa;
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+        }
+
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: start;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .year-badge {
+            background: rgba(37, 99, 235, 0.2);
+            padding: 8px 16px;
+            border-radius: 8px;
+            font-weight: 600;
+            white-space: nowrap;
+        }
+
+        .company {
+            color: #d1d5db;
+            font-size: 1.2rem;
+            font-style: italic;
+        }
+
+        .tech-tag {
+            color: #a78bfa;
+            font-weight: 600;
+            margin-bottom: 15px;
+            display: block;
+        }
+
+        ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        ul li {
+            padding: 8px 0;
+            padding-left: 25px;
+            position: relative;
+            color: #d1d5db;
+        }
+
+        ul li::before {
+            content: '▹';
+            position: absolute;
+            left: 0;
+            color: #60a5fa;
+            font-size: 1.2rem;
+        }
+
+        .highlight {
+            background: rgba(37, 99, 235, 0.2);
+            padding: 4px 12px;
+            border-radius: 6px;
+            display: inline-block;
+            margin: 5px;
+            font-size: 0.9rem;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .skill-item {
+            background: linear-gradient(135deg, rgba(37, 99, 235, 0.2) 0%, rgba(124, 58, 237, 0.2) 100%);
+            border: 1px solid rgba(59, 130, 246, 0.3);
+            padding: 15px 25px;
+            border-radius: 10px;
+            text-align: center;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .skill-item:hover {
+            background: linear-gradient(135deg, rgba(37, 99, 235, 0.3) 0%, rgba(124, 58, 237, 0.3) 100%);
+            transform: translateY(-3px);
+        }
+
+        .cert-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .cert-item {
+            background: rgba(30, 41, 59, 0.5);
+            border: 1px solid rgba(59, 130, 246, 0.2);
+            padding: 20px;
+            border-radius: 12px;
+            display: flex;
+            align-items: start;
+            gap: 15px;
+            transition: all 0.3s;
+        }
+
+        .cert-item:hover {
+            border-color: rgba(59, 130, 246, 0.4);
+            transform: translateY(-3px);
+        }
+
+        .cert-item i {
+            color: #60a5fa;
+            font-size: 1.8rem;
+            flex-shrink: 0;
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+
+        .info-box {
+            background: linear-gradient(135deg, rgba(37, 99, 235, 0.1) 0%, rgba(124, 58, 237, 0.1) 100%);
+            border: 1px solid rgba(59, 130, 246, 0.2);
+            padding: 30px;
+            border-radius: 15px;
+        }
+
+        .info-box i {
+            font-size: 2rem;
+            color: #60a5fa;
+            margin-bottom: 15px;
+        }
+
+        .info-box h3 {
+            color: #60a5fa;
+            margin-bottom: 10px;
+        }
+
+        /* Footer */
+        footer {
+            background: rgba(15, 23, 42, 0.5);
+            border-top: 1px solid rgba(59, 130, 246, 0.2);
+            padding: 40px 0;
+            text-align: center;
+            margin-top: 80px;
+        }
+
+        footer h3 {
+            color: #60a5fa;
+            margin-bottom: 20px;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        .social-links a {
+            background: #2563eb;
+            color: white;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 10px;
+            transition: all 0.3s;
+            font-size: 1.5rem;
+        }
+
+        .social-links a:hover {
+            background: #1d4ed8;
+            transform: translateY(-3px);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+
+            .subtitle {
+                font-size: 1.2rem;
+            }
+
+            .contact-info {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .btn-group {
+                flex-direction: column;
+            }
+
+            h2 {
+                font-size: 2rem;
+            }
+
+            .card-header {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <h1>LOGITH T</h1>
+            <p class="subtitle">Data-Driven Business Analytics Professional</p>
+            <p class="bio">
+                Expertise in finance, statistical analysis, and business intelligence. Skilled in Python, Tableau, and SQL with proven ability to transform complex data into actionable insights.
+            </p>
+            
+            <div class="contact-info">
+                <div class="contact-item">
+                    <i class="fas fa-envelope"></i>
+                    <span>logiththiru28@gmail.com</span>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-phone"></i>
+                    <span>+91 9360586893</span>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <span>Theni, Tamil Nadu, India</span>
+                </div>
+            </div>
+
+            <div class="btn-group">
+                <a href="#" class="btn btn-primary">Download Resume</a>
+                <a href="mailto:logiththiru28@gmail.com" class="btn btn-secondary">Contact Me</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Navigation -->
+    <nav>
+        <div class="container">
+            <ul class="nav-links">
+                <li><button class="nav-btn active" data-section="about">About</button></li>
+                <li><button class="nav-btn" data-section="experience">Experience</button></li>
+                <li><button class="nav-btn" data-section="projects">Projects</button></li>
+                <li><button class="nav-btn" data-section="skills">Skills</button></li>
+                <li><button class="nav-btn" data-section="education">Education</button></li>
+                <li><button class="nav-btn" data-section="certifications">Certifications</button></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="container">
+        <!-- About Section -->
+        <section id="about" class="active">
+            <h2>About Me</h2>
+            <div class="card">
+                <p style="font-size: 1.1rem; line-height: 1.8; color: #d1d5db; margin-bottom: 20px;">
+                    Data-driven Business Analytics professional with expertise in finance, statistical analysis, and business intelligence. Currently pursuing Master of Business Analytics at SRM Institute of Science and Technology with a CGPA of 8.7.
+                </p>
+                <p style="font-size: 1.1rem; line-height: 1.8; color: #d1d5db;">
+                    I specialize in transforming complex data into actionable insights using Python, SQL, Tableau, and Power BI. My experience spans data science, finance management, and operational analytics across multiple industries.
+                </p>
+            </div>
+
+            <div class="about-grid">
+                <div class="info-box">
+                    <i class="fas fa-language"></i>
+                    <h3>Languages</h3>
+                    <p style="color: #d1d5db;">English, Tamil, Kannada, Hindi</p>
+                </div>
+                <div class="info-box">
+                    <i class="fas fa-globe"></i>
+                    <h3>Location Preference</h3>
+                    <p style="color: #d1d5db;">Open to opportunities in UAE and international markets</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Experience Section -->
+        <section id="experience">
+            <h2>Professional Experience</h2>
+            
+            <div class="card">
+                <div class="card-header">
+                    <div>
+                        <h3>Data Science Intern</h3>
+                        <p class="company">Vcodez</p>
+                    </div>
+                    <span class="year-badge">2024</span>
+                </div>
+                <ul>
+                    <li>Conducted EDA and feature engineering using Python, enhancing ML model performance</li>
+                    <li>Developed interactive dashboards in Power BI and Tableau, delivering actionable business insights</li>
+                    <li>Collaborated cross-functionally to translate business requirements into data-driven solutions</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <div>
+                        <h3>Finance Management Intern</h3>
+                        <p class="company">LS Mills Limited</p>
+                    </div>
+                    <span class="year-badge">2023</span>
+                </div>
+                <ul>
+                    <li>Analyzed financial data and prepared management reports supporting strategic decisions</li>
+                    <li>Managed budget tracking and resource allocation using financial modeling techniques</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <div>
+                        <h3>Management Trainee</h3>
+                        <p class="company">JBM Auto Limited</p>
+                    </div>
+                    <span class="year-badge">2022</span>
+                </div>
+                <ul>
+                    <li>Streamlined operations and inventory management, identifying cost reduction opportunities</li>
+                    <li>Analyzed operational metrics to drive efficiency improvements</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section id="projects">
+            <h2>Key Projects</h2>
+            
+            <div class="card">
+                <h3>Automatic Traffic Monitoring System</h3>
+                <span class="tech-tag">Machine Learning | CNN | YOLO</span>
+                <p style="color: #d1d5db; margin-bottom: 15px;">Developed CNN and YOLO models achieving 89% accuracy in real-time traffic violation detection</p>
+                <div>
+                    <span class="highlight">89% Detection Accuracy</span>
+                    <span class="highlight">65% Time Reduction</span>
+                    <span class="highlight">Automated Fine Prediction</span>
+                </div>
+            </div>
+
+            <div class="card">
+                <h3>Chicago Crime Analysis</h3>
+                <span class="tech-tag">Python | Power BI</span>
+                <p style="color: #d1d5db; margin-bottom: 15px;">Analyzed 500K+ crime records, identifying seasonal trends and peak crime hours</p>
+                <div>
+                    <span class="highlight">500K+ Records Analyzed</span>
+                    <span class="highlight">Interactive Dashboards</span>
+                    <span class="highlight">Strategic Hotspot Visualization</span>
+                </div>
+            </div>
+
+            <div class="card">
+                <h3>Metaverse-Based Resume Screening System</h3>
+                <span class="tech-tag">NLP | Machine Learning</span>
+                <p style="color: #d1d5db; margin-bottom: 15px;">Built NLP-powered screening system with 90% skill-matching accuracy</p>
+                <div>
+                    <span class="highlight">90% Matching Accuracy</span>
+                    <span class="highlight">70% Time Reduction</span>
+                    <span class="highlight">Virtual Interview Framework</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section id="skills">
+            <h2>Technical Skills</h2>
+            
+            <div class="card">
+                <h3 style="margin-bottom: 20px;">Programming & Tools</h3>
+                <div class="skills-grid">
+                    <div class="skill-item">Python</div>
+                    <div class="skill-item">SQL</div>
+                    <div class="skill-item">Excel</div>
+                    <div class="skill-item">Tableau</div>
+                    <div class="skill-item">Power BI</div>
+                </div>
+            </div>
+
+            <div class="card">
+                <h3 style="margin-bottom: 20px;">Core Competencies</h3>
+                <div class="skills-grid">
+                    <div class="skill-item">Statistical Analysis</div>
+                    <div class="skill-item">Data Visualization</div>
+                    <div class="skill-item">Predictive Modeling</div>
+                    <div class="skill-item">Business Intelligence</div>
+                    <div class="skill-item">Financial Analysis</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Education Section -->
+        <section id="education">
+            <h2>Education</h2>
+            
+            <div class="card">
+                <div class="card-header">
+                    <div>
+                        <h3>Master of Business Analytics</h3>
+                        <p class="company">SRM Institute of Science and Technology</p>
+                        <p style="color: #9ca3af;">Chennai, India</p>
+                    </div>
+                    <div style="text-align: right;">
+                        <span class="year-badge" style="display: block; margin-bottom: 10px;">2024 – 2026</span>
+                        <span style="color: #60a5fa; font-weight: 700; font-size: 1.1rem;">CGPA: 8.7</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <div>
+                        <h3>Bachelor of Commerce (Accounting & Finance)</h3>
+                        <p class="company">GRD College of Arts and Sciences</p>
+                        <p style="color: #9ca3af;">Coimbatore, India</p>
+                    </div>
+                    <div style="text-align: right;">
+                        <span class="year-badge" style="display: block; margin-bottom: 10px;">2021 – 2024</span>
+                        <span style="color: #60a5fa; font-weight: 700; font-size: 1.1rem;">CGPA: 7.5</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Certifications Section -->
+        <section id="certifications">
+            <h2>Certifications</h2>
+            
+            <div class="cert-grid">
+                <div class="cert-item">
+                    <i class="fas fa-award"></i>
+                    <p style="color: #d1d5db; font-size: 1.05rem;">Business Analytics – Institute of Analytics (IOA)</p>
+                </div>
+                <div class="cert-item">
+                    <i class="fas fa-award"></i>
+                    <p style="color: #d1d5db; font-size: 1.05rem;">Foundation Course in Managerial Economics – NPTEL</p>
+                </div>
+                <div class="cert-item">
+                    <i class="fas fa-award"></i>
+                    <p style="color: #d1d5db; font-size: 1.05rem;">Effective Leadership – HP LIFE</p>
+                </div>
+                <div class="cert-item">
+                    <i class="fas fa-award"></i>
+                    <p style="color: #d1d5db; font-size: 1.05rem;">Power BI Projects – Great Learning</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <h3>Let's Connect</h3>
+            <p style="color: #9ca3af; margin-bottom: 20px;">Seeking challenging opportunities in UAE and international markets</p>
+            
+            <div class="social-links">
+                <a href="mailto:logiththiru28@gmail.com" title="Email"><i class="fas fa-envelope"></i></a>
+                <a href="tel:+919360586893" title="Phone"><i class="fas fa-phone"></i></a>
+                <a href="#" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                <a href="#" title="GitHub"><i class="fab fa-github"></i></a>
+            </div>
+            
+            <p style="color: #6b7280; margin-top: 20px;">© 2026 Logith T. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Navigation functionality
+        const navBtns = document.querySelectorAll('.nav-btn');
+        const sections = document.querySelectorAll('section');
+
+        navBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const targetSection = btn.getAttribute('data-section');
+                
+                // Remove active class from all buttons and sections
+                navBtns.forEach(b => b.classList.remove('active'));
+                sections.forEach(s => s.classList.remove('active'));
+                
+                // Add active class to clicked button and target section
+                btn.classList.add('active');
+                document.getElementById(targetSection).classList.add('active');
+                
+                // Smooth scroll to top
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+        });
+    </script>
+</body>
+</html>
